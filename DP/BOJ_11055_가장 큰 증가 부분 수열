@@ -1,0 +1,11 @@
+import sys
+n=int(sys.stdin.readline())
+
+s=list(map(int,sys.stdin.readline().split()))
+result=s[:]
+
+for i in range(n):
+    for j in range(i):
+        if s[j] < s[i]:
+            result[i]=max(result[j]+s[i],result[i])          
+print(max(result))
