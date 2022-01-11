@@ -1,0 +1,21 @@
+n = int(input())
+s = list(map(int, input().split()))
+result1=[1]*n
+result2=[1]*n
+
+for k in range(n):
+    for i in range(k):
+            if s[i]<s[k]:
+                result1[k]=max(result1[i]+1,result1[k])
+
+for k in range(n-1,-1,-1):
+    for j in range(n-1,k,-1):
+        if s[k]>s[j]:
+            result2[k]=max(result2[k],result2[j]+1)
+
+result=[0]*n
+
+for i in range(n):
+    result[i]=result1[i]+result2[i]-1
+
+print(max(result))
