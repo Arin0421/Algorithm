@@ -1,5 +1,7 @@
-from sys import stdin
-def search(array, target, start, end):
+import sys
+input=sys.stdin.readline
+
+def binary_search(array, target, start, end):
     
     if start > end:
         return 0
@@ -9,22 +11,20 @@ def search(array, target, start, end):
     if array[mid] == target:
         return array[start:end+1].count(target)
     elif array[mid]>target:
-        return search(array, target, start, mid-1)
+        return binary_search(array, target, start, mid-1)
     else:
-        return search(array, target, mid+1, end)
+        return binary_search(array, target, mid+1, end)
 
+n=int(input())
+n_list=list(map(int,input().split()))
+n_list.sort()
 
-n=stdin.readline().rstrip()
-array=list(map(int,stdin.readline().split()))
-array.sort()
-m=stdin.readline().rstrip()
-target=list(map(int,stdin.readline().split()))
+m=int(input())
+m_list=list(map(int,input().split()))
 
 n_dic={}
-for num in array:
-    start=0
-    end=len(array)-1
-    if num not in n_dic:
-        n_dic[num]=search(array,num,start,end)
+for x in m_list:
+    if x not in n_dic:
+        n_dic[x]=binary_search(n_list,x,0,n-1)
 
-print(' '.join(str(n_dic[x]) if x in n_dic else '0' for x in target))
+print(' '.join(str(n_dic[x]) if x in n_dic else '0' for x in m_list))
