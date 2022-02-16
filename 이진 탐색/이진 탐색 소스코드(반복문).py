@@ -1,4 +1,5 @@
 #이진 탐색 소스코드 구현(반복문)
+#출처 : 이것이 취업을 위한 코딩테스트다 with 파이썬, 나동빈 지음
 def binary_search(array, target, start, end):
     while start <= end:
         mid = (start + end) // 2
