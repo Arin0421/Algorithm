@@ -1,6 +1,6 @@
 x=int(input())
 
-d=[0] * 30001
+d=[0] * (x+1)
 
 for i in range(2,x+1):
     d[i]=d[i-1]+1
