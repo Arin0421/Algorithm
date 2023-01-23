@@ -2,7 +2,7 @@ n=int(input())
 
 array=list(map(int,input().split()))
 
-d=[0]*100
+d=[0]*n
 
 d[0]=array[0]
 d[1]=max(array[0],array[1])
