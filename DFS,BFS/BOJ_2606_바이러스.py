@@ -1,24 +1,25 @@
-
-def dfs(v):
-    global sum
-    visited[v]=True
-    for e in adj[v]:
-        if not visited[e]:
-            sum+=1
-            dfs(e)
-
+from collections import deque
 n=int(input())
-k=int(input())
-adj=[[] for _ in range(n+1)]
-     
-result=[]
-     
-for _ in range(k):
-     x,y=map(int,input().split())
-     adj[x].append(y)
-     adj[y].append(x)
-sum=0
-visited=[False]*(n+1)
-dfs(1)
+con=int(input())
 
-print(sum)
+graph= [ [] for _ in range(n+1)]
+visited=[False]*(n+1)
+
+for _ in range(con):
+    a,b=map(int,input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+
+num=0
+q=deque([1])
+visited[1]=True
+
+while q:
+    v=q.popleft()
+    for i in graph[v]:
+        if not visited[i]:
+            q.append(i)
+            visited[i]=True
+            num+=1
+
+print(num)
