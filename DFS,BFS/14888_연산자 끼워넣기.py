@@ -5,8 +5,8 @@ n=int(input())
 num=list(map(int,input().split()))
 op=list(map(int,input().split()))
 
-min_result=10**7
-max_result=-10**7
+min_result=1e9
+max_result=-1e9
     
 def dfs(i,result,add,sub,mul,div):
     global min_result,max_result
