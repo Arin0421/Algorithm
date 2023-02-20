@@ -2,15 +2,14 @@ n=input()
 length=len(n)
 k=length//2
 
-left_sum=0
-right_sum=0
+left=0
+right=0
 
 for i in range(k):
-    left_sum+=int(n[i])
-for j in range(k,length):
-    right_sum+=int(n[j])
+    left+=int(n[i])
+    right+=int(n[length-i-1])
 
-if left_sum == right_sum:
-    print("LUCKY")
-else:print("READY")
-    
+if left==right:
+    print('LUCKY')
+else:
+    print('READY')
