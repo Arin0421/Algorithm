@@ -1,19 +1,14 @@
-n=int(input())
-dp=[]
-
-for _ in range(n):
-    dp.append(list(map(int,input().split())))
-
-for i in range(1,n):
-    for j in range(i+1):
-        if j==0:
-            up_left=0
-        else:
-            up_left=dp[i-1][j-1]
-        if j==i:
-            up=0
-        else:
-            up=dp[i-1][j]
-        dp[i][j]=dp[i][j]+max(up_left,up)
-
-print(max(dp[n-1]))
+def solution(triangle):
+    answer = 0
+    n=len(triangle)
+    
+    for i in range(1,n):
+        for j in range(len(triangle[i])):
+            if j==0:
+                triangle[i][j] += triangle[i-1][j]
+            elif j==len(triangle[i])-1:
+                triangle[i][j] += triangle[i-1][j-1]
+            else:
+                triangle[i][j] += max(triangle[i-1][j-1],triangle[i-1][j])
+    answer=max(triangle[-1])
+    return answer
