@@ -1,15 +1,15 @@
-n=input()
-length=len(n)
-k=length//2
+n=int(input())
 
+num=str(n)
+k=len(num)//2
 left=0
 right=0
 
 for i in range(k):
-    left+=int(n[i])
-    right+=int(n[length-i-1])
+    left+=int(num[i])
+    right+=int(num[k+i])
 
 if left==right:
-    print('LUCKY')
+    print("LUCKY")
 else:
-    print('READY')
+    print("READY")
