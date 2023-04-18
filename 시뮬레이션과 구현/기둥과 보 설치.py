@@ -12,8 +12,7 @@ def check(answer):
 
 def solution(n, build_frame):
     answer = []
-    for frame in build_frame:
-        x,y,a,b=frame
+    for x,y,a,b in build_frame:   
         if b==0:
             answer.remove([x,y,a])
             if not check(answer):
@@ -22,5 +21,4 @@ def solution(n, build_frame):
             answer.append([x,y,a])
             if not check(answer):
                 answer.remove([x,y,a])
-                
     return sorted(answer)
