@@ -1,17 +1,15 @@
-n=input()
-arr=[]
-arr=n.split('-')
-ans=0
+n=input().split('-')
+num=[]
 
-temp=arr[0].split('+')
-for i in temp:
-    ans+=int(i)
+for i in n:
+    cnt=0
+    s = i.split('+')
+    for j in s:
+        cnt+=int(j)
+    num.append(cnt)
 
-for i in range(1,len(arr)):
-    temp=arr[i].split('+')
-    num=0
-    for i in temp:
-        num+=int(i)
-    ans-=num
-
-print(ans)
+n=num[0]
+for i in range(1,len(num)):
+    n-=num[i]
+    
+print(n)
