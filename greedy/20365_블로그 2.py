@@ -1,21 +1,12 @@
 n=int(input())
 ps=input()
 
-blue=[]
-red=[]
+colors={'B':0, 'R':0}
+colors[ps[0]]+=1
 
-blue=ps.split('R')
-red=ps.split('B')
+for i in range(1,n):
+    if ps[i]!=ps[i-1]:
+        colors[ps[i]]+=1
 
-blue_cnt=0
-red_cnt=0
-
-for i in blue:
-    if 'B' in i:
-        blue_cnt+=1
-
-for i in red:
-    if 'R' in i:
-        red_cnt += 1
-
-print(min(blue_cnt,red_cnt)+1)
+ans=min(colors['B'],colors['R'])
+print(ans+1)
