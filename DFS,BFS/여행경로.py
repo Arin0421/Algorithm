@@ -1,6 +1,5 @@
 from collections import defaultdict
 
-
 def solution(tickets):
     visited = defaultdict(list)
     graph = defaultdict(list)
