@@ -6,94 +6,75 @@ board=[]
 for _ in range(n):
     board.append(list(map(int,sys.stdin.readline().split())))
 
-def zero_up(board):
-    for i in range(n-1):
-        for j in range(n):
-            if board[i][j]==0:
-                board[i][j]=board[i+1][j]
-                board[i+1][j]=0
-    return board
-
 def up(board):
-    zero_up(board)
-    for i in range(n):
-        k = 0
-        while k<n-1:
-            if board[k][i] == board[k + 1][i]:
-                board[k][i] *= 2
-                board[k + 1][i] = 0
-                k += 2
-            else:
-                k+=1
-    zero_up(board)
+    for j in range(n):
+        pointer = 0
+        for i in range(1, n):
+            if board[i][j]:
+                tmp = board[i][j]
+                board[i][j] = 0
+                if board[pointer][j] == 0:
+                    board[pointer][j] = tmp
+                elif board[pointer][j]  == tmp:
+                    board[pointer][j] *= 2
+                    pointer += 1
+                else:
+                    pointer += 1
+                    board[pointer][j] = tmp
     return board
 
-def zero_down(board):
-    for i in range(n-1,0,-1):
-        for j in range(n):
-            if board[i][j]==0:
-                board[i][j]=board[i-1][j]
-                board[i-1][j]=0
-    return board
-
+# DOWN
 def down(board):
-    zero_down(board)
-
-    for i in range(n):
-        k = n - 1
-        while k>1:
-            if board[k][i] == board[k - 1][i]:
-                board[k][i] *= 2
-                board[k - 1][i] = 0
-                k -= 2
-            else:
-                k-=1
-    zero_down(board)
+    for j in range(n):
+        pointer = n - 1
+        for i in range(n - 2, -1, -1):
+            if board[i][j]:
+                tmp = board[i][j]
+                board[i][j] = 0
+                if board[pointer][j] == 0:
+                    board[pointer][j] = tmp
+                elif board[pointer][j]  == tmp:
+                    board[pointer][j] *= 2
+                    pointer -= 1
+                else:
+                    pointer -= 1
+                    board[pointer][j] = tmp
     return board
 
-def zero_left(board):
-    for i in range(n):
-        for j in range(n-1):
-            if board[i][j]==0:
-                board[i][j]=board[i][j+1]
-                board[i][j+1]=0
-    return board
-
+# LEFT
 def left(board):
-    zero_left(board)
     for i in range(n):
-        k = 0
-        while k<n-1:
-            if board[i][k] == board[i][k+1]:
-                board[i][k] *= 2
-                board[i][k+1] = 0
-                k += 2
-            else:
-                k+=1
-    zero_left(board)
+        pointer = 0
+        for j in range(1, n):
+            if board[i][j]:
+                tmp = board[i][j]
+                board[i][j] = 0
+                if board[i][pointer] == 0:
+                    board[i][pointer] = tmp
+                elif board[i][pointer]  == tmp:
+                    board[i][pointer] *= 2
+                    pointer += 1
+                else:
+                    pointer += 1
+                    board[i][pointer]= tmp
     return board
 
-def zero_right(board):
-    for i in range(n):
-        for j in range(n-1,0,-1):
-            if board[i][j]==0:
-                board[i][j]=board[i][j-1]
-                board[i][j-1]=0
-    return board
-
+# RIGHT
 def right(board):
-    zero_right(board)
-
     for i in range(n):
-        k = n - 1
-        while k>1:
-            if board[i][k] == board[i][k-1]:
-                board[i][k] *= 2
-                board[i][k-1] = 0
-                k -= 2
-            else:
-                k-=1
-    zero_right(board)
+        pointer = n - 1
+        for j in range(n - 2, -1, -1):
+            if board[i][j]:
+                tmp = board[i][j]
+                board[i][j] = 0
+                if board[i][pointer] == 0:
+                    board[i][pointer] = tmp
+                elif board[i][pointer]  == tmp:
+                    board[i][pointer] *= 2
+                    pointer -= 1
+                else:
+                    pointer -= 1
+                    board[i][pointer] = tmp
     return board
 
 ans=2
