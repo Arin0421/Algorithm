@@ -9,7 +9,7 @@ def solution(number, k):
             while answer[-1] < i:
                 answer.pop()
                 k -= 1
-                if len(answer) == 0 or k <= 0:
+                if len(answer) == 0 or k == 0:
                     break
         answer.append(i)
 
