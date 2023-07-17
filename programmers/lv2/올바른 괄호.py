@@ -1,6 +1,6 @@
 def solution(s):
-    answer = True
     temp=[]
+    
     for i in s:
         if i=='(':
             temp.append(i)
