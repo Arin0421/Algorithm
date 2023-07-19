@@ -12,17 +12,13 @@ def isRight(s):
         else:
             temp.append(i)
     
-    if len(temp)==0:
-        return True
-    else:
-        return False
+    return (True if len(temp)==0 else False)
     
 def solution(s):
     answer = 0
     k=len(s)
     for i in range(len(s)):
-        arr=[]
-        arr=s[i:]+s[0:i]
-        if isRight(arr):
+        if isRight(s):
             answer+=1
+        s=s[1:]+s[0]
     return answer
