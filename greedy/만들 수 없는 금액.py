@@ -1,13 +1,13 @@
-n=map(int,input())
-data = list(map(int,input().split()))
-data.sort()
+n=int(input())
+arr=list(map(int,input().split()))
 
-target=1
-for x in data:
-    #만들 수 없는 금액을 찾았을 때 반복 종료
-    if target<x:
+arr.sort()
+ans=1
+idx=0
+while True:
+    if ans<arr[idx]:
         break
-    target+=x
+    ans+=arr[idx]
+    idx+=1
 
-print(target)
-
+print(ans)
