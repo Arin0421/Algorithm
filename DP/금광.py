@@ -14,14 +14,12 @@ for _ in range(t):
         for j in range(n):
             if j==0:
                 dp[j][i]+=max(dp[j][i-1],dp[j+1][i-1])
-            elif j==1:
-                dp[j][i]+=max(dp[j-1][i-1],dp[j][i-1],dp[j+1][i-1])
+            elif j==n-1:
+                dp[j][i]+=max(dp[j][i-1],dp[j-1][i-1])
             else:
-                dp[j][i]+=max(dp[j-1][i-1],dp[j][i-1])
+                dp[j][i]+=max(dp[j-1][i-1],dp[j][i-1],dp[j+1][i-1])
 
     ans=0
     for i in range(n):
-        if ans<dp[i][m-1]:
-            ans=dp[i][m-1]
-
+        ans=max(ans,dp[i][m-1])
     print(ans)
