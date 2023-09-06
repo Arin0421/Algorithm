@@ -8,7 +8,6 @@ arr = [[0] * n for _ in range(n)]
 dx = [0, 0, -1, 1]
 dy = [-1, 1, 0, 0]
 
-
 def find_like(info, x, y):
     cnt = 0
 
@@ -21,7 +20,6 @@ def find_like(info, x, y):
                     cnt += 1
     return cnt
 
-
 def find_empty(info, x, y):
     cnt = 0
 
@@ -32,7 +30,6 @@ def find_empty(info, x, y):
             if arr[nx][ny] == 0:
                 cnt += 1
     return cnt
-
 
 for data in info:
     like_cnt, empty_cnt = 0, 0
