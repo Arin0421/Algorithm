@@ -1,24 +1,21 @@
 import sys
 input=sys.stdin.readline
+n, s = map(int, input().split())
+arr = list(map(int, input().split()))
 
-n,s=map(int,input().split())
-arr=list(map(int,input().split()))
-ans=0
+ans = 0
 
-def dfs(idx,num):
+def back(idx,temp):
     global ans
 
-    if idx>=n:
-        return
+    if sum(temp) == s and len(temp) > 0:
+        ans += 1
 
-    num+=arr[idx]
+    for i in range(idx, n):
+        temp.append(arr[i])
+        back(i + 1,temp)
+        temp.pop()
 
-    if num==s:
-        ans+=1
 
-    dfs(idx+1,num)
-
-    dfs(idx+1,num-arr[idx])
-
-dfs(0,0)
+back(0,[])
 print(ans)
