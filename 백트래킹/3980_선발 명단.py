@@ -1,20 +1,24 @@
-
-def dfs(player,score):
-    global max_score
-    if player==11:
-        max_score=max(max_score,score)
-        return
-    for i in range(11):
-        if visited[i] or not data[player][i]:
-            continue
-        visited[i]=1
-        dfs(player+1,score+data[player][i])
-        visited[i]=0
+import sys
+input=sys.stdin.readline
 
 t=int(input())
+
+def back(idx,cnt):
+    global ans
+    if idx==11 and 0 not in position:
+        ans=max(ans,cnt)
+        return
+    
+    for i in range(11):
+        if arr[idx][i] and position[i]==0:
+            position[i]=1
+            back(idx+1,cnt+arr[idx][i])
+            position[i]=0
+
 for _ in range(t):
-    data=[list(map(int,input().split())) for _ in range(11)]
-    max_score=0
-    visited=[0]*11
-    dfs(0,0)
-    print(max_score)
+    arr=[list(map(int,input().split())) for _ in range(11)]
+    position=[0]*11
+
+    ans=0
+    back(0,0)
+    print(ans)
